@@ -11,6 +11,8 @@ import web.service.CarService;
 import java.util.List;
 
 
+/*fixme контроллер должен маппиться на /cars
+*  */
 @Controller()
 public class CarController {
 
