@@ -1,13 +1,11 @@
 package web.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.*;
 
 import java.util.Objects;
 
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
@@ -20,12 +18,12 @@ public class User {
     public User() {
     }
 
-    public User(long id, String name, Integer course, String email) {
-        this.id = id;
-        this.name = name;
-        this.course = course;
-        this.email = email;
-    }
+//    public User(long id, String name, Integer course, String email) {
+//        this.id = id;
+//        this.name = name;
+//        this.course = course;
+//        this.email = email;
+//    }
 
     public User(String name, Integer course, String email) {
         this.name = name;

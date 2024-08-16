@@ -10,7 +10,6 @@ import web.model.User;
 import web.service.UserService;
 
 @Controller("/user")
-
 public class UserController {
     @Autowired
     private UserService userService;
@@ -18,39 +17,40 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-//    @GetMapping
-//    public String getMapping(){
-//        return "user";
-//    }
+
 
     @PostMapping("/add")
     public String addUser(@RequestParam("user") User user, ModelMap model) {
         userService.addUser(user);
-        return "/WEB-INF/user.html";
+        return "user";
 
     }
 
     @PostMapping("/id")
     public String updateUser(@RequestParam("id") Long id, User user, ModelMap model) {
         userService.updateUser(id, user);
-        return "/WEB-INF/user.html";
+        return "user";
+
     }
 
     @GetMapping("/read/id")
     public String readUser(@RequestParam("id") Long id, ModelMap model) {
         userService.findByIdUser(id);
-        return "/WEB-INF/user.html";
+        return "user";
+
     }
 
     @GetMapping("/read")
     public String readAllUser(ModelMap model) {
         userService.findAllUser();
-        return "/WEB-INF/user.html";
+        return "user";
+
     }
 
     @PostMapping("/delete/id")
     public String deleteUser(@RequestParam("id") Long id, ModelMap model) {
         userService.deleteUser(id);
-        return "/WEB-INF/user.html";
+        return "user";
+
     }
 }

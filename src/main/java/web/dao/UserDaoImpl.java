@@ -1,11 +1,13 @@
 package web.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
 import web.model.User;
 
 import java.util.List;
-
+@Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext //?
@@ -60,7 +62,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findAll() {
         em.getTransaction().begin();
-        List<User>usersList = em.createQuery("from User").getResultList();
+        List<User>usersList = em.createQuery("from User",User.class).getResultList();
         em.getTransaction().commit();
         return usersList;
     }

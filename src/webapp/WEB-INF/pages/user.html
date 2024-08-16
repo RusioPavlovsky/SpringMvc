@@ -9,24 +9,24 @@
 <div>
     <h2>База данных</h2>
 </div>
-<div>
-    <table>
-        <tread>
-            <tr th:text="${user.id}">id</tr>
-            <tr th:text="${user.name}">Имя</tr>
-            <tr th:text="${user.course}">Курс</tr>
-            <tr th:text="${user.email}">Email</tr>
-        </tread>
-    </table>
-<!--</div>-->
 <!--<div>-->
-<!--    <th:block th:each="user : ${users}">-->
-<!--        <h1 th:text="${user.id}"></h1>-->
-<!--        <h1 th:text="${user.name}"></h1>-->
-<!--        <h1 th:text="${user.course}"></h1>-->
-<!--        <h1 th:text="${user.email}"></h1>-->
-<!--    </th:block>-->
+<!--    <table>-->
+<!--        <tread>-->
+<!--            <tr th:text="${user.id}">id</tr>-->
+<!--            <tr th:text="${user.name}">Имя</tr>-->
+<!--            <tr th:text="${user.course}">Курс</tr>-->
+<!--            <tr th:text="${user.email}">Email</tr>-->
+<!--        </tread>-->
+<!--    </table>-->
 <!--</div>-->
+<div>
+    <th:block th:each="user : ${users}">
+        <h1 th:text="${user.id}"></h1>
+        <h1 th:text="${user.name}"></h1>
+        <h1 th:text="${user.course}"></h1>
+        <h1 th:text="${user.email}"></h1>
+    </th:block>
+</div>
 
 </body>
 </html>

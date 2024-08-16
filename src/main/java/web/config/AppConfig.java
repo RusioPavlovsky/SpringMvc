@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @PropertySource("classpath:db.properties")
 @ComponentScan(value = "web")
-
 @EnableTransactionManagement
 public class AppConfig {
 
