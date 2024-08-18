@@ -1,32 +1,84 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
+    <title>Users</title>
 </head>
 <body>
 <div>
-    <h2>База данных</h2>
+    <h2>Data base </h2>
+    <div>
+        <form action="http://localhost:8080/user/read/" method="get">
+            <button type="submit">findAll</button>
+        </form>
+    </div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.course}"></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
-<!--<div>-->
-<!--    <table>-->
-<!--        <tread>-->
-<!--            <tr th:text="${user.id}">id</tr>-->
-<!--            <tr th:text="${user.name}">Имя</tr>-->
-<!--            <tr th:text="${user.course}">Курс</tr>-->
-<!--            <tr th:text="${user.email}">Email</tr>-->
-<!--        </tread>-->
-<!--    </table>-->
-<!--</div>-->
 <div>
-    <th:block th:each="user : ${users}">
-        <h1 th:text="${user.id}"></h1>
-        <h1 th:text="${user.name}"></h1>
-        <h1 th:text="${user.course}"></h1>
-        <h1 th:text="${user.email}"></h1>
-    </th:block>
+    <h2>Find user by ID</h2>
+    <form action="http://localhost:8080/user/read/id" method="get">
+        <label for="id">User ID</label>
+        <input type="text" name="id" id="id" required>
+        <button type="submit">find</button>
+    </form>
 </div>
+<div>
+    <h2>User details</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <td><label th:text="${user.id}"></label></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td><label th:text="${user.name}"></label></td>
+        </tr>
+        <tr>
+            <th>Course</th>
+            <td><label th:text="${user.course}"></label></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><label th:text="${user.email}"></label></td>
+        </tr>
+
+    </table>
+</div>
+<div>
+    <h2>Create User</h2>
+    <div>
+        <form action="http://localhost:8080/user/add/" method="post">
+            <button type="submit">Create user</button>
+        </form>
+    </div>
+</div>
+
+
+
+<!--&lt;!&ndash; Кнопка для возврата на главную страницу &ndash;&gt;-->
+<!--<div>-->
+<!--    <button onclick="location.href='/'">Back to Home</button>-->
+<!--</div>-->
+<!--</body>-->
 
 </body>
 </html>
+

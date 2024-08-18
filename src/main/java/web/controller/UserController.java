@@ -5,11 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
 import web.service.UserService;
 
-@Controller("/user")
+import java.util.List;
+
+@Controller
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -17,11 +21,15 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
+    @GetMapping("/")
+    public String index(ModelMap model) {
+        return "user";
+    }
 
     @PostMapping("/add")
     public String addUser(@RequestParam("user") User user, ModelMap model) {
-        userService.addUser(user);
+        User userAdd =userService.addUser(user);
+        model.addAttribute("user",userAdd);
         return "user";
 
     }
@@ -35,14 +43,16 @@ public class UserController {
 
     @GetMapping("/read/id")
     public String readUser(@RequestParam("id") Long id, ModelMap model) {
-        userService.findByIdUser(id);
+        User userId = userService.findByIdUser(id);
+        model.addAttribute("user", userId);
         return "user";
 
     }
 
     @GetMapping("/read")
     public String readAllUser(ModelMap model) {
-        userService.findAllUser();
+        List<User> users =userService.findAllUser();
+        model.addAttribute("users", users);
         return "user";
 
     }
