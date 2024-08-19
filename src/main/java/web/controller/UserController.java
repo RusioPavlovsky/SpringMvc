@@ -32,6 +32,7 @@ public class UserController {
                           @RequestParam("email") String email,
                           ModelMap model) {
         User usersAdd = new User(name, course, email);
+        //fixme не хватает пробела
         User userAdd =userService.addUser(usersAdd);
         model.addAttribute("user",userAdd);
         return "user";
@@ -52,6 +53,7 @@ public class UserController {
 
     @GetMapping("/read/id")
     public String readUser(@RequestParam("id") Long id, ModelMap model) {
+        //fixme не совсем удачное имя переменной userId
         User userId = userService.findByIdUser(id);
         model.addAttribute("user", userId);
         return "user";
