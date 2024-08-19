@@ -18,12 +18,6 @@ public class User {
     public User() {
     }
 
-//    public User(long id, String name, Integer course, String email) {
-//        this.id = id;
-//        this.name = name;
-//        this.course = course;
-//        this.email = email;
-//    }
 
     public User(String name, Integer course, String email) {
         this.name = name;

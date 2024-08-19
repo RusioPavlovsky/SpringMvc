@@ -26,17 +26,26 @@ public class UserController {
         return "user";
     }
 
-    @PostMapping("/add")
-    public String addUser(@RequestParam("user") User user, ModelMap model) {
-        User userAdd =userService.addUser(user);
+    @GetMapping("/add")
+    public String addUser(@RequestParam("name") String name,
+                          @RequestParam("course") Integer course,
+                          @RequestParam("email") String email,
+                          ModelMap model) {
+        User usersAdd = new User(name, course, email);
+        User userAdd =userService.addUser(usersAdd);
         model.addAttribute("user",userAdd);
         return "user";
 
     }
 
     @PostMapping("/id")
-    public String updateUser(@RequestParam("id") Long id, User user, ModelMap model) {
-        userService.updateUser(id, user);
+    public String updateUser(@RequestParam("id") Long id,
+                             @RequestParam("name") String name,
+                             @RequestParam("course") Integer course,
+                             @RequestParam("email") String email, ModelMap model) {
+        User updateUser = new User(name, course, email);
+        userService.updateUser(id, updateUser);
+        model.addAttribute("user",updateUser);
         return "user";
 
     }
@@ -57,9 +66,10 @@ public class UserController {
 
     }
 
-    @PostMapping("/delete/id")
+    @GetMapping("/delete/id")
     public String deleteUser(@RequestParam("id") Long id, ModelMap model) {
         userService.deleteUser(id);
+        model.addAttribute("user");
         return "user";
 
     }

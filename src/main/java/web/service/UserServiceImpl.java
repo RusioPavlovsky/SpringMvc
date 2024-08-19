@@ -22,9 +22,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Transactional
     @Override
     public void updateUser(Long id, User user) {
-        userDao.update(id,user);
+        userDao.update(id, user);
 
     }
 
@@ -41,6 +42,7 @@ public class UserServiceImpl implements UserService {
         return userDao.findById(id);
     }
 
+    @Transactional
     @Override
     public List<User> findAllUser() {
         return userDao.findAll();
