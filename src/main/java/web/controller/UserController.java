@@ -21,6 +21,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/")
     public String index(ModelMap model) {
         return "user";
@@ -33,8 +34,9 @@ public class UserController {
                           ModelMap model) {
         User usersAdd = new User(name, course, email);
         //fixme не хватает пробела
-        User userAdd =userService.addUser(usersAdd);
-        model.addAttribute("user",userAdd);
+
+        User userAdd = userService.addUser(usersAdd);
+        model.addAttribute("user", userAdd);
         return "user";
 
     }
@@ -45,8 +47,9 @@ public class UserController {
                              @RequestParam("course") Integer course,
                              @RequestParam("email") String email, ModelMap model) {
         User updateUser = new User(name, course, email);
+
         userService.updateUser(id, updateUser);
-        model.addAttribute("user",updateUser);
+        model.addAttribute("user", updateUser);
         return "user";
 
     }
@@ -54,15 +57,15 @@ public class UserController {
     @GetMapping("/read/id")
     public String readUser(@RequestParam("id") Long id, ModelMap model) {
         //fixme не совсем удачное имя переменной userId
-        User userId = userService.findByIdUser(id);
-        model.addAttribute("user", userId);
+        User findUserId = userService.findByIdUser(id);
+        model.addAttribute("user", findUserId);
         return "user";
 
     }
 
     @GetMapping("/read")
     public String readAllUser(ModelMap model) {
-        List<User> users =userService.findAllUser();
+        List<User> users = userService.findAllUser();
         model.addAttribute("users", users);
         return "user";
 
