@@ -34,7 +34,6 @@ public class UserController {
                           ModelMap model) {
         User usersAdd = new User(name, course, email);
         //fixme не хватает пробела
-
         User userAdd = userService.addUser(usersAdd);
         model.addAttribute("user", userAdd);
         return "user";
@@ -47,7 +46,6 @@ public class UserController {
                              @RequestParam("course") Integer course,
                              @RequestParam("email") String email, ModelMap model) {
         User updateUser = new User(name, course, email);
-
         userService.updateUser(id, updateUser);
         model.addAttribute("user", updateUser);
         return "user";
